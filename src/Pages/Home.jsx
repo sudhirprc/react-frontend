@@ -5,6 +5,7 @@ import About from "./About";
 import Services from "./Services";
 import Prices from "./Prices";
 import Contact from "./Contact";
+import Footer from "../components/Footer";
 
 import BackToTopButton from "../components/BackToBottom";
 
@@ -38,6 +39,7 @@ const Home = () => {
         </section>
 
         <BackToTopButton />
+        <Footer />
       </div>
     </>
   );

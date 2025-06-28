@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 fixed top-0 left-0 w-full z-50">
       <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between p-4">
-        <div className="text-xl font-bold text-yellow-500">
+        <div className="text-xl font-bold text-yellow-400">
           Lumora&nbsp;Hotels
         </div>
 

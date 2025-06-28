@@ -2,48 +2,82 @@ import React from "react";
 
 const Search = () => {
   return (
-    <div>
-      <form className="flex items-center max-w-lg mx-auto">
-        <label htmlFor="voice-search" className="sr-only">
-          Search
-        </label>
-        <div className="relative w-full">
-          <div className="relative inset-y-0 start-0 flex items-center ps-3 pointer-events-none"></div>
-          <input
-            type="text"
-            id="voice-search"
-            className="bg-grey-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Where you want to go bruh!"
-            required
-          />
-          <button
-            type="button"
-            className="absolute inset-y-0 end-0 flex items-center pe-3"
-          ></button>
-        </div>
-        <button
-          type="submit"
-          className="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-black bg-yellow-500 rounded-lg border border-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:focus:ring-yellow-400"
-        >
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="
+        flex w-full                       /* always a single row           */
+        max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl
+        mx-auto
+      "
+    >
+      {/* ───────── INPUT ───────── */}
+      <label htmlFor="location" className="sr-only">
+        Search destination
+      </label>
+
+      <div className="relative flex-grow">
+        <input
+          id="location"
+          type="text"
+          autoComplete="off"
+          placeholder="Where do you want to go?"
+          className="
+            w-full
+            bg-gray-50 dark:bg-gray-700
+            border border-gray-300 dark:border-gray-600
+            text-xs sm:text-sm md:text-base
+            text-gray-900 dark:text-white
+            rounded-lg
+            pl-10 pr-14             /* room for icons                  */
+            py-2.5
+            focus:outline-none focus:ring-2 focus:ring-emerald-500
+          "
+        />
+
+        {/* left icon  */}
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <svg
-            className="w-4 h-4 me-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
+            className="w-4 h-4 text-gray-400"
+            viewBox="0 0 24 24"
             fill="none"
-            viewBox="0 0 20 20"
           >
             <path
               stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
               strokeWidth="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              d="M21 21 16.65 16.65M10.5 17a6.5 6.5 0 1 1 4.6-11.1 6.5 6.5 0 0 1-4.6 11.1Z"
             />
           </svg>
-          Search
-        </button>
-      </form>
-    </div>
+        </div>
+      </div>
+
+      {/* ───────── BUTTON ───────── */}
+      <button
+        type="submit"
+        className="
+          ml-2
+          flex items-center gap-2
+          whitespace-nowrap
+          px-4 py-2
+          rounded-lg
+          text-xs sm:text-sm font-medium
+          bg-yellow-500 hover:bg-yellow-600
+          text-black
+          shadow
+          shrink-0           /* never let button shrink           */
+        "
+      >
+        <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none">
+          <path
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
+        </svg>
+        <span className="hidden xs:inline">Search</span>
+      </button>
+    </form>
   );
 };
 
