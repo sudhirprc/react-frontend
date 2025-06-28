@@ -54,8 +54,12 @@ const Hero = () => (
       {/* Title */}
       <motion.h1
         variants={fadeUp}
+<<<<<<< HEAD
         className="overflow-visible font-extrabold leading-tight mb-4 sm:mb-6 tracking-tight
              text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+=======
+        className="font-extrabold leading-tight tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+>>>>>>> 8a0df0361eb47d1fdac80bc1a79a14eac8c9f2f9
       >
         <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
           Welcome&nbsp;to
@@ -67,9 +71,13 @@ const Hero = () => (
         <motion.span
           animate={{ backgroundPositionX: ["0%", "100%", "0%"] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+<<<<<<< HEAD
           className="ml-2 w-fit inline-block
              bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500
              bg-[length:200%_auto] bg-clip-text text-transparent"
+=======
+          className="ml-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-[length:200%_auto] bg-clip-text text-transparent"
+>>>>>>> 8a0df0361eb47d1fdac80bc1a79a14eac8c9f2f9
         >
           Hotels
         </motion.span>
