@@ -1,70 +1,88 @@
-import React from "react";
+// Search.jsx
+import React, { useEffect, useMemo, useState } from "react";
+import cities from "../data/cities.json";
 
-const Search = () => {
+import { Autocomplete, TextField, InputAdornment } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
+export default function Search() {
+  /* ─── state ─── */
+  const [options, setOptions] = useState([]);
+  const [input, setInput] = useState("");
+
+  /* ─── mount: load & sort city list ─── */
+  useEffect(() => {
+    const list = Array.from(new Set(cities.map((c) => c.trim()))).sort((a, b) =>
+      a.localeCompare(b)
+    );
+    setOptions(list);
+  }, []);
+
+  /* ─── memoised filtered list (first 15 matches) ─── */
+  const filteredOptions = useMemo(() => {
+    if (!input) return options.slice(0, 15);
+    return options
+      .filter((c) => c.toLowerCase().startsWith(input.toLowerCase()))
+      .slice(0, 15);
+  }, [input, options]);
+
+  /* ─── UI ─── */
   return (
     <form
-      onSubmit={(e) => e.preventDefault()}
-      className="
-        flex w-full                       /* always a single row           */
-        max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl
-        mx-auto
-      "
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log("Selected city:", input);
+        /* Trigger navigation / fetch here if needed */
+      }}
+      className="flex w-full max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto"
     >
-      {/* ───────── INPUT ───────── */}
-      <label htmlFor="location" className="sr-only">
-        Search destination
-      </label>
+      <Autocomplete
+        freeSolo
+        disablePortal /* <— keeps the popper inside the flow */
+        options={filteredOptions}
+        value={input}
+        onInputChange={(_, v) => setInput(v)}
+        className="flex-grow"
+        PopperProps={{
+          modifiers: [
+            { name: "offset", options: { offset: [0, 6] } }, // 6 px below input
+          ],
+          sx: { zIndex: 50 }, // make sure it sits *below* your navbar (if navbar z‑index > 40)
+        }}
+        sx={{
+          "& .MuiInputBase-root": {
+            fontSize: { xs: 12, sm: 14, md: 16 },
+            paddingRight: "3.5rem",
+            backgroundColor: "#F9FAFB",
+            borderRadius: "0.5rem",
+          },
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            placeholder="Where do you want to go?"
+            variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon sx={{ fontSize: 18, color: "text.secondary" }} />
+                </InputAdornment>
+              ),
+              sx: {
+                "& fieldset": { borderColor: "#D1D5DB" },
+                "&:hover fieldset": { borderColor: "#10B981" },
+                "&.Mui-focused fieldset": { borderColor: "#10B981" },
+              },
+            }}
+          />
+        )}
+      />
 
-      <div className="relative flex-grow">
-        <input
-          id="location"
-          type="text"
-          autoComplete="off"
-          placeholder="Where do you want to go?"
-          className="
-            w-full
-            bg-gray-50 dark:bg-gray-700
-            border border-gray-300 dark:border-gray-600
-            text-xs sm:text-sm md:text-base
-            text-gray-900 dark:text-white
-            rounded-lg
-            pl-10 pr-14             /* room for icons                  */
-            py-2.5
-            focus:outline-none focus:ring-2 focus:ring-emerald-500
-          "
-        />
-
-        {/* left icon  */}
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <svg
-            className="w-4 h-4 text-gray-400"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              stroke="currentColor"
-              strokeWidth="2"
-              d="M21 21 16.65 16.65M10.5 17a6.5 6.5 0 1 1 4.6-11.1 6.5 6.5 0 0 1-4.6 11.1Z"
-            />
-          </svg>
-        </div>
-      </div>
-
-      {/* ───────── BUTTON ───────── */}
+      {/* submit button */}
       <button
         type="submit"
-        className="
-          ml-2
-          flex items-center gap-2
-          whitespace-nowrap
-          px-4 py-2
-          rounded-lg
-          text-xs sm:text-sm font-medium
-          bg-yellow-500 hover:bg-yellow-600
-          text-black
-          shadow
-          shrink-0           /* never let button shrink           */
-        "
+        className="ml-2 flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-yellow-500 hover:bg-yellow-600 text-black shadow shrink-0"
       >
         <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none">
           <path
@@ -79,6 +97,4 @@ const Search = () => {
       </button>
     </form>
   );
-};
-
-export default Search;
+}
