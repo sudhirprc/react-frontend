@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -33,6 +34,13 @@ const pricingPlans = [
 ];
 
 const Prices = () => {
+  const navigate = useNavigate();
+
+  const handleBookClick = (plan) => {
+    // Navigate to hotel list page with plan name
+    navigate(`/hotels?plan=${plan.name}`);
+  };
+
   return (
     <section
       id="pricing"
@@ -77,7 +85,6 @@ const Prices = () => {
                 : "border-gray-300"
             }`}
           >
-            {/* Highlight badge */}
             {plan.highlight && (
               <div className="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-xl">
                 Most Popular
@@ -98,6 +105,7 @@ const Prices = () => {
             </ul>
 
             <button
+              onClick={() => handleBookClick(plan)}
               className={`w-full py-2 rounded-lg font-semibold text-white ${
                 plan.highlight
                   ? "bg-emerald-600 hover:bg-emerald-700"

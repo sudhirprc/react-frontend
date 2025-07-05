@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Prices from "./Pages/Prices";
-
+import HotelList from "./Pages/HotelList";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -19,6 +19,7 @@ function App() {
         <Route path="services" element={<Services />} />
         <Route path="pricing" element={<Prices />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="/hotels" element={<HotelList />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
