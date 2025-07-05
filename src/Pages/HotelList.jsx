@@ -41,7 +41,7 @@ const hotelData = {
       location: "Chennai",
       price: "$189/night",
       image:
-        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1470&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "City-view rooms with premium amenities.",
       amenities: ["Gym", "Free Parking", "Rooftop Bar"],
     },
@@ -74,7 +74,7 @@ const hotelData = {
       location: "Dharamshala",
       price: "$309/night",
       image:
-        "https://images.unsplash.com/photo-1551888410-61b2840779d7?auto=format&fit=crop&w=800&q=60",
+        "https://images.unsplash.com/photo-1687241770401-850bc87aeefa?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Panoramic valley views with rooftop dining.",
       amenities: ["Infinity Pool", "Yoga Sessions", "Free Wi-Fi"],
     },
@@ -107,7 +107,7 @@ const hotelData = {
       location: "Andaman",
       price: "$519/night",
       image:
-        "https://images.unsplash.com/photo-1501117716987-c8e1ecb210d7?auto=format&fit=crop&w=800&q=60",
+        "https://images.unsplash.com/photo-1551598305-fe1be9fe579e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Luxury beachfront estate with private pier.",
       amenities: ["Snorkeling Gear", "Sunset Cruise", "Gourmet Seafood"],
     },
